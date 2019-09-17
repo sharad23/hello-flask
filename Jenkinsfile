@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls -la'
-                sh 'docker ps'
+                sh 'docker login -u="sharad23" -p="Iluvcanada1991"'
+                sh 'docker docker build -t sharad23/hello-flask:v1 .'
+                sh 'docker push sharad23/hello-flask:v1'
             }
         }
     }
