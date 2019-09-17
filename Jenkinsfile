@@ -12,6 +12,7 @@ pipeline {
             agent { docker 'python:3' }
             steps {
                 sh 'python test.py'
+                sh 'pip freeze'
             }
         }
         stage('Deploy') {
