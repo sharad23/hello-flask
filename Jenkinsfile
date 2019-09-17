@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3'
-        }
-    } 
+    agent any 
     stages {
         stage('Build') {
             steps {
@@ -11,11 +7,6 @@ pipeline {
                 sh 'docker build -t sharad23/hello-flask:v1 .'
                 sh 'docker push sharad23/hello-flask:v1'
             }
-        }
-        stage('Test') {
-            steps {
-               sh 'python test.py'
-            }  
         }
         stage('Deploy') {
            steps {
