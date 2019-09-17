@@ -8,5 +8,13 @@ pipeline {
                 sh 'docker push sharad23/hello-flask:v1'
             }
         }
+        stage('Deploy') {
+           steps {
+                sh 'docker stop my-app'
+                sh 'docker rm my-app'
+                sh 'docker pull sharad23/hello-flask:v1'
+                sh 'docker run -d -p 5000:5000 sharad23/hello-flask:v1'
+           } 
+        }
     }
 }
