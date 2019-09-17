@@ -8,6 +8,12 @@ pipeline {
                 sh 'docker push sharad23/hello-flask:v1'
             }
         }
+        stage('Test') {
+            agent { docker 'python:3' }
+            steps {
+                sh 'python test.py'
+            }
+        }
         stage('Deploy') {
            steps {
                 sh 'docker stop my-app'
