@@ -11,8 +11,9 @@ pipeline {
         stage('Test') {
             agent { docker 'python:3' }
             steps {
+                sh 'pip install -r requirements.txt'
                 sh 'python test.py'
-                sh 'pip freeze'
+
             }
         }
         stage('Deploy') {
